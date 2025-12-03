@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="桃汽水の魔力补给站 - 异世界精灵公主的周年庆典特别企划">
+    <meta name="theme-color" content="#FF9AC8">
+    
+    <title>桃汽水の魔力补给站 - 周年庆典</title>
+    
+    <!-- 样式表 -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+    
+    <!-- 网站图标 -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    
+    <!-- Open Graph 标签（用于社交分享） -->
+    <meta property="og:title" content="桃汽水の魔力补给站 - 周年庆典">
+    <meta property="og:description" content="来自异世界的精灵公主桃汽水邀请您参加周年庆典！">
+    <meta property="og:image" content="assets/images/og-image.jpg">
+    <meta property="og:url" content="https://taoci-anniversary.github.io">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card 标签 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="桃汽水の魔力补给站">
+    <meta name="twitter:description" content="异世界精灵公主的周年庆典特别企划">
+</head>
+<body>
+    <!-- 加载动画 -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-spinner">
+            <div class="spinner-circle"></div>
+            <div class="spinner-text">加载魔力补给站中...</div>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title" id="site-title">桃汽水の魔力补给站</span>
+                    <span class="logo-subtitle" id="site-subtitle">周年庆典特别企划</span>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-button" id="mobile-menu-button" aria-label="菜单">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="nav-links">
+                <a href="#home" class="nav-link active" data-page="home" aria-label="首页">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-text">魔力大厅</span>
+                </a>
+                <a href="#games" class="nav-link" data-page="games" aria-label="收集魔力">
+                    <i class="fas fa-gamepad"></i>
+                    <span class="nav-text">收集魔力</span>
+                </a>
+                <a href="#wheel" class="nav-link" data-page="wheel" aria-label="祈愿转盘">
+                    <i class="fas fa-gift"></i>
+                    <span class="nav-text">祈愿转盘</span>
+                </a>
+                <a href="#ranking" class="nav-link" data-page="ranking" aria-label="魔力榜单">
+                    <i class="fas fa-trophy"></i>
+                    <span class="nav-text">魔力榜单</span>
+                </a>
+                <a href="#messages" class="nav-link" data-page="messages" aria-label="留言板">
+                    <i class="fas fa-comments"></i>
+                    <span class="nav-text">留言板</span>
+                </a>
+                
+                <!-- 用户信息（移动端隐藏） -->
+                <div class="user-info-mobile">
+                    <div class="user-avatar-small">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span id="username-display">未登录</span>
+                </div>
+            </div>
+            
+            <!-- 桌面端用户信息 -->
+            <div class="user-info-desktop">
+                <div class="user-avatar" id="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-details">
+                    <span class="user-name" id="username-display-desktop">契约者</span>
+                    <span class="user-points" id="user-points-display">0 魔力</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <main class="main-content" id="main-content">
+        <!-- 首页：魔力大厅 -->
+        <section id="home" class="page active">
+            <div class="container">
+                <!-- 英雄区域 -->
+                <div class="hero-section">
+                    <h1 class="hero-title" id="welcome-title">欢迎来到桃汽水的魔力补给站</h1>
+                    <p class="hero-subtitle" id="welcome-subtitle">来自异世界的精灵公主需要你的帮助！通过收集魔力，帮助公主维持次元裂缝，并有机会获得公主的特别礼物！</p>
+                    
+                    <!-- 角色展示区域 -->
+                    <div class="character-display">
+                        <div class="character-frame">
+                            <div class="character-image" id="character-image">
+                                <!-- 角色图片由JS动态加载 -->
+                                <i class="fas fa-crown fa-5x"></i>
+                                <div class="character-label">桃汽水公主</div>
+                            </div>
+                            <div class="character-bubbles">
+                                <div class="bubble bubble-1"></div>
+                                <div class="bubble bubble-2"></div>
+                                <div class="bubble bubble-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 倒计时区域 -->
+                    <div class="countdown-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-hourglass-half"></i>
+                            <span id="countdown-title">周年庆倒计时</span>
+                        </h2>
+                        <div id="countdown-display" class="countdown-display">
+                            <!-- 倒计时由JS动态生成 -->
+                            <div class="countdown-loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>加载倒计时...</span>
+                            </div>
+                        </div>
+                        <p class="countdown-message" id="countdown-message"></p>
+                    </div>
+                    
+                    <!-- 快速统计 -->
+                    <div class="quick-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="total-magic">0</div>
+                                <div class="stat-label">全站总魔力</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="total-users">0</div>
+                                <div class="stat-label">参与契约者</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-day"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="days-active">0</div>
+                                <div class="stat-label">网站运行天数</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 功能入口 -->
+                <div class="action-grid">
+                    <a href="#games" class="action-card" data-page="games">
+                        <div class="action-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3 class="action-title">收集魔力</h3>
+                        <p class="action-desc">通过小游戏收集魔力</p>
+                        <div class="action-badge">3款游戏</div>
+                    </a>
+                    
+                    <a href="#wheel" class="action-card" data-page="wheel">
+                        <div class="action-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3 class="action-title">祈愿转盘</h3>
+                        <p class="action-desc">消耗魔力抽取公主的礼物</p>
+                        <div class="action-badge">6种奖品</div>
+                    </a>
+                    
+                    <a href="#ranking" class="action-card" data-page="ranking">
+                        <div class="action-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3 class="action-title">魔力榜单</h3>
+                        <p class="action-desc">查看魔力收集排行榜</p>
+                        <div class="action-badge">每日更新</div>
+                    </a>
+                    
+                    <a href="#messages" class="action-card" data-page="messages">
+                        <div class="action-icon">
+                            <i class="fas fa-comment-dots"></i>
+                        </div>
+                        <h3 class="action-title">契约留言</h3>
+                        <p class="action-desc">给公主留言送祝福</p>
+                        <div class="action-badge">实时更新</div>
+                    </a>
+                </div>
+                
+                <!-- 公告板 -->
+                <div class="announcement-board">
+                    <div class="board-header">
+                        <h2 class="board-title">
+                            <i class="fas fa-bullhorn"></i>
+                            公主的公告板
+                        </h2>
+                        <div class="board-status">
+                            <span class="status-badge" id="event-status-badge">准备中</span>
+                        </div>
+                    </div>
+                    <div class="board-content">
+                        <div class="announcement-list" id="announcement-list">
+                            <!-- 公告由JS动态生成 -->
+                            <div class="announcement-item">
+                                <div class="announcement-icon">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </div>
+                                <div class="announcement-text">加载公告中...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 留言板预览 -->
+                <div class="message-preview">
+                    <div class="preview-header">
+                        <h2 class="preview-title">
+                            <i class="fas fa-comments"></i>
+                            契约者留言板
+                        </h2>
+                        <a href="#messages" class="view-all-link" data-page="messages">
+                            查看全部 <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="preview-content">
+                        <div class="message-list" id="message-preview-list">
+                            <!-- 留言预览由JS动态生成 -->
+                            <div class="message-item">
+                                <div class="message-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-user">加载中...</span>
+                                        <span class="message-time">刚刚</span>
+                                    </div>
+                                    <div class="message-text">留言板正在加载中，请稍候...</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 留言输入框（预览） -->
+                        <div class="message-input-preview">
+                            <div class="input-wrapper">
+                                <input type="text" 
+                                       id="quick-message-input" 
+                                       placeholder="给桃汽水公主留言吧~（点击输入）" 
+                                       maxlength="50"
+                                       readonly>
+                                <button class="input-button" id="quick-message-button" disabled>
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                            <p class="input-hint">在留言板页面可以发送完整留言</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 游戏页面：收集魔力 -->
+        <section id="games" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">
+                        <i class="fas fa-gamepad"></i>
+                        收集魔力游戏坊
+                    </h1>
+                    <p class="page-subtitle">选择你喜欢的小游戏，为桃汽水公主收集魔力能量吧！每款游戏都有不同的魔力产出哦~</p>
+                </div>
+                
+                <div class="games-container" id="games-container">
+                    <!-- 游戏内容由games.js动态生成 -->
+                    <div class="games-loading">
+                        <div class="loading-content">
+                            <i class="fas fa-spinner fa-spin fa-2x"></i>
+                            <p>加载游戏列表中...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 转盘页面：祈愿转盘 -->
+        <section id="wheel" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">
+                        <i class="fas fa-gift"></i>
+                        祈愿转盘
+                    </h1>
+                    <p class="page-subtitle">消耗魔力进行祈愿，有机会获得桃汽水公主准备的特别礼物！每次祈愿消耗500魔力。</p>
+                </div>
+                
+                <div class="wheel-container" id="wheel-container">
+                    <!-- 转盘内容由wheel.js动态生成 -->
+                    <div class="wheel-loading">
+                        <div class="loading-content">
+                            <i class="fas fa-spinner fa-spin fa-2x"></i>
+                            <p>加载祈愿转盘中...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 排行榜页面：魔力榜单 -->
+        <section id="ranking" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">
+                        <i class="fas fa-trophy"></i>
+                        魔力榜单
+                    </h1>
+                    <p class="page-subtitle">展示所有为桃汽水公主收集魔力的契约者排名。前10名将获得公主的特别奖励！</p>
+                </div>
+                
+                <div class="ranking-container" id="ranking-container">
+                    <!-- 排行榜内容由ranking.js动态生成 -->
+                    <div class="ranking-loading">
+                        <div class="loading-content">
+                            <i class="fas fa-spinner fa-spin fa-2x"></i>
+                            <p>加载排行榜中...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 留言板页面 -->
+        <section id="messages" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">
+                        <i class="fas fa-comment-dots"></i>
+                        契约者留言板
+                    </h1>
+                    <p class="page-subtitle">在这里写下对桃汽水公主的祝福和想说的话吧！所有留言都会被公主看到哦~</p>
+                </div>
+                
+                <div class="message-board-container">
+                    <!-- 留言统计 -->
+                    <div class="message-stats">
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="total-messages">0</div>
+                                <div class="stat-label">总留言数</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="unique-users">0</div>
+                                <div class="stat-label">参与用户</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="latest-message-time">0</div>
+                                <div class="stat-label">最新留言</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 留言列表 -->
+                    <div class="message-board">
+                        <div class="board-header">
+                            <h3 class="board-title">所有留言</h3>
+                            <div class="board-controls">
+                                <button class="control-button" id="refresh-messages" aria-label="刷新留言">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                                <div class="sort-control">
+                                    <label for="sort-select">排序：</label>
+                                    <select id="sort-select" class="sort-select">
+                                        <option value="latest">最新优先</option>
+                                        <option value="oldest">最早优先</option>
+                                        <option value="popular">热度优先</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="message-list-full" id="message-list-full">
+                            <!-- 完整留言列表由JS动态生成 -->
+                            <div class="empty-message">
+                                <i class="fas fa-comment-slash fa-3x"></i>
+                                <p>还没有留言，快来成为第一个吧！</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 分页控件 -->
+                        <div class="pagination" id="message-pagination">
+                            <button class="page-button prev-button" id="prev-page" disabled>
+                                <i class="fas fa-chevron-left"></i> 上一页
+                            </button>
+                            <span class="page-info" id="page-info">第 1 页 / 共 1 页</span>
+                            <button class="page-button next-button" id="next-page" disabled>
+                                下一页 <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 留言发布区域 -->
+                    <div class="message-publish">
+                        <h3 class="publish-title">发布留言</h3>
+                        <div class="publish-form">
+                            <div class="form-group">
+                                <label for="message-user-name">你的昵称：</label>
+                                <input type="text" 
+                                       id="message-user-name" 
+                                       placeholder="请输入昵称（最多10个字）"
+                                       maxlength="10">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message-content">留言内容：</label>
+                                <textarea id="message-content" 
+                                          placeholder="写下你想对桃汽水公主说的话吧~（最多140字）"
+                                          maxlength="140"
+                                          rows="4"></textarea>
+                                <div class="char-counter">
+                                    <span id="char-count">0</span> / 140
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button class="publish-button" id="publish-message" disabled>
+                                    <i class="fas fa-paper-plane"></i>
+                                    发布留言
+                                </button>
+                                <div class="publish-hint">
+                                    <i class="fas fa-info-circle"></i>
+                                    留言可能需要审核后才能显示
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <div class="footer-logo">
+                        <i class="fas fa-crown"></i>
+                        <span>桃汽水の魔力补给站</span>
+                    </div>
+                    <p class="footer-description">
+                        来自异世界的精灵公主桃汽水，为感谢契约者们一年的陪伴而特别建立的魔力补给站。
+                        周年庆典特别企划，感谢每一位契约者的参与！
+                    </p>
+                    <div class="social-links" id="social-links">
+                        <!-- 社交链接由JS动态生成 -->
+                    </div>
+                </div>
+                
+                <div class="footer-section links">
+                    <h3 class="footer-title">快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home" data-page="home">魔力大厅</a></li>
+                        <li><a href="#games" data-page="games">收集魔力</a></li>
+                        <li><a href="#wheel" data-page="wheel">祈愿转盘</a></li>
+                        <li><a href="#ranking" data-page="ranking">魔力榜单</a></li>
+                        <li><a href="#messages" data-page="messages">留言板</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section info">
+                    <h3 class="footer-title">网站信息</h3>
+                    <ul class="footer-info">
+                        <li>
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>周年庆：<span id="footer-event-date">2024年12月25日 19:00</span></span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>网站版本：<span id="site-version">v1.0.0</span></span>
+                        </li>
+                        <li>
+                            <i class="fas fa-code"></i>
+                            <span>最后更新：<span id="last-update">2024年12月10日</span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2024 桃汽水の魔力补给站 | 本网站仅为周年庆活动使用，最终解释权归桃汽水所有
+                </div>
+                <div class="footer-extra">
+                    <span class="view-count">
+                        <i class="fas fa-eye"></i>
+                        访问量：<span id="view-count">0</span>
+                    </span>
+                    <span class="online-count">
+                        <i class="fas fa-user"></i>
+                        在线：<span id="online-count">0</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 模态框容器 -->
+    <div id="modal-container"></div>
+
+    <!-- 回到顶部按钮 -->
+    <button class="back-to-top" id="back-to-top" aria-label="回到顶部">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- 配置和脚本 -->
+    <script src="config.js"></script>
+    
+    <!-- 核心模块 -->
+    <script src="modules/core.js"></script>
+    <script src="modules/navigation.js"></script>
+    <script src="modules/countdown.js"></script>
+    <script src="modules/messages.js"></script>
+    
+    <!-- 功能模块（按需加载） -->
+    <script src="modules/games.js"></script>
+    <script src="modules/wheel.js"></script>
+    <script src="modules/ranking.js"></script>
+    
+    <!-- 主脚本 -->
+    <script src="script.js"></script>
+    
+    <!-- 初始化脚本 -->
+    <script>
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 隐藏加载动画
+            setTimeout(function() {
+                const loadingScreen = document.getElementById('loading-screen');
+                if (loadingScreen) {
+                    loadingScreen.style.opacity = '0';
+                    setTimeout(function() {
+                        loadingScreen.style.display = 'none';
+                    }, 500);
+                }
+            }, 800);
+            
+            // 初始化应用
+            if (typeof initApp === 'function') {
+                initApp();
+            }
+            
+            // 初始化核心模块
+            if (typeof initCoreModules === 'function') {
+                initCoreModules();
+            }
+        });
+        
+        // 处理页面错误
+        window.addEventListener('error', function(event) {
+            console.error('页面发生错误:', event.error);
+            
+            // 显示友好的错误提示
+            const errorDisplay = document.createElement('div');
+            errorDisplay.className = 'error-message';
+            errorDisplay.innerHTML = `
+                <div class="error-content">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>哎呀，出了点小问题</h3>
+                    <p>魔力补给站遇到了一个小问题，请刷新页面重试</p>
+                    <button onclick="window.location.reload()" class="refresh-button">
+                        <i class="fas fa-redo"></i> 刷新页面
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(errorDisplay);
+        });
+    </script>
+</body>
+</html>
